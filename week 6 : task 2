@@ -1,0 +1,66 @@
+
+#include <iostream>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+class Student {
+private:
+    string studentName;
+    string admissionNumber;
+    double feeBalance;
+
+public:
+    void inputStudent() {
+        cout << "Enter student name: ";
+        getline(cin, studentName);
+
+        cout << "Enter admission number: ";
+        getline(cin, admissionNumber);
+
+        cout << "Enter fee balance: KSh ";
+        cin >> feeBalance;
+    }
+
+    void makePayment() {
+        double payment;
+
+        cout << "Enter payment amount: KSh ";
+        cin >> payment;
+
+        if (payment <= 0) {
+            cout << "Invalid payment amount." << endl;
+        } else if (payment > feeBalance) {
+            cout << "Payment exceeds the fee balance." << endl;
+        } else {
+            feeBalance = feeBalance - payment;
+            cout << "Payment made successfully." << endl;
+        }
+    }
+
+    void displayStatus() {
+        cout << fixed << setprecision(2);
+
+        cout << "\n===== STUDENT FEE STATUS =====\n";
+        cout << "Student Name: " << studentName << endl;
+        cout << "Admission Number: " << admissionNumber << endl;
+        cout << "Remaining Fee Balance: KSh "
+             << feeBalance << endl;
+
+        if (feeBalance == 0) {
+            cout << "Status: Fees Fully Paid" << endl;
+        } else {
+            cout << "Status: Fees Balance Remaining" << endl;
+        }
+    }
+};
+
+int main() {
+    Student student1;
+
+    student1.inputStudent();
+    student1.makePayment();
+    student1.displayStatus();
+
+    return 0;
+}
