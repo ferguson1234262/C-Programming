@@ -1,0 +1,44 @@
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    double balance, withdrawalAmount;
+
+    cout << "Enter initial account balance: KSh ";
+    cin >> balance;
+
+    cout << fixed << setprecision(2);
+
+    while (balance > 0) {
+        cout << "\nCurrent balance: KSh " << balance << endl;
+        cout << "Enter withdrawal amount: KSh ";
+        cin >> withdrawalAmount;
+
+        if (withdrawalAmount > balance) {
+            cout << "Insufficient balance. Withdrawal stopped."
+                 << endl;
+            break;
+        }
+
+        if (withdrawalAmount <= 0) {
+            cout << "Enter a withdrawal amount greater than zero."
+                 << endl;
+            continue;
+        }
+
+        balance = balance - withdrawalAmount;
+
+        cout << "Withdrawal successful." << endl;
+        cout << "Remaining balance: KSh " << balance << endl;
+    }
+
+    if (balance == 0) {
+        cout << "\nYour account balance is zero." << endl;
+    }
+
+    cout << "Thank you for using the system." << endl;
+
+    return 0;
+}
